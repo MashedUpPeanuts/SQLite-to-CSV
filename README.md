@@ -1,7 +1,7 @@
 # DB-CSV-Converter
 This project provides a GUI based application to extract tables from an SQLite3 Database (*.DB file format), exporting selected tables as .CSV files at a selected location.
 
-This project's original purpose was to provide a tool for converting Bentley AutoPIPE Results Database files into .csv files for easier processing for Engineering analysis. However, the tool has now been generalized to allow it to work for conversion of SQLite3 database files generally.
+This project's original purpose was to provide a tool for converting Bentley AutoPIPE Results Database files into .csv files for easier processing for Engineering analysis. However, the tool has now been generalized to allow it to work for conversion of any SQLite3 database tables.
 
 # How It Works
 This project was coded in Python, using standard libraries.
