@@ -1,6 +1,6 @@
-#V0.01.00
+#V1.00.00
 
-#Importing libraries for SQLite3 conversion
+#Importing libraries
 import os
 import sqlite3
 import csv
@@ -85,6 +85,10 @@ def openFile():
             Checkbutton(fTable, text=table, variable = var).grid(row=rowPos, column=1, sticky="W")
             rowPos += 1
         updateScrollRegion()
+    else:       #Clears checklist if an existing database is replaced with an invalid file or no file
+       checkbox_vars=[]
+       for widget in fTable.winfo_children():
+           widget.destroy()
 
     my_text.configure(state="disabled")
 
@@ -118,6 +122,7 @@ def ConversionWindow():
 def cancelProcess():
     mainWindow.destroy()
 
+#Reads the states of the tickboxes in the checkWindow
 def readStates():
     global tickStates
     tickStates = []
@@ -131,8 +136,19 @@ checkbox_vars = []
 
 mainWindow = Tk()   #Opening window for file selection
 
+windowWidth = 1200
+windowHeight = 300
+checkWidth = 300
+checkHeight = windowHeight
+screen_width = mainWindow.winfo_screenwidth()
+screen_height = mainWindow.winfo_screenheight()
+windowCornerH = (screen_width - windowWidth - checkWidth)/2
+windowCornerV = (screen_height - windowHeight)/2
+checkCornerH = windowCornerH + windowWidth
+checkCornerV = windowCornerV
+
 #Basic window geometry
-mainWindow.geometry('%dx%d+%d+%d' % (1200, 300, 400, 400))
+mainWindow.geometry('%dx%d+%d+%d' % (windowWidth, windowHeight, windowCornerH, windowCornerV))
 mainWindow.resizable(False, False)
 mainWindow.title("SQLite3 Database (*.DB) Conversion Tool")
 
@@ -174,8 +190,9 @@ errorOutput.pack(pady=(10,0))
 #Database table selection window
 tickWindow = Toplevel(mainWindow)
 tickWindow.title("Select tables to export")
-tickWindow.geometry('%dx%d+%d+%d' % (300, 300, 1600, 400))
+tickWindow.geometry('%dx%d+%d+%d' % (checkWidth, checkHeight, checkCornerH, checkCornerV))
 tickWindow.resizable(False, False)
+tickWindow.protocol("WM_DELETE_WINDOW", cancelProcess) #Closes main window when child window is closed
 
 cTableContainer = Canvas(tickWindow)
 fTable = Frame(cTableContainer)
