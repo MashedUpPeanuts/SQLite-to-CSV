@@ -1,5 +1,5 @@
 ###################
-# VERSION 1.03.01 #
+# VERSION 1.03.02 #
 ###################
 
 ###################
@@ -7,11 +7,15 @@
 ###################
 
 import os
+from os import path
+import sys
 import sqlite3
 import csv
 from tkinter import *
 from tkinter import filedialog
 from tkinter import font
+
+
 
 ########################
 # VARIABLE DEFINITIONS #
@@ -25,6 +29,12 @@ checkboxVars = []
 ########################
 # FUNCTION DEFINITIONS #
 ########################
+
+
+
+def resource_path(relative_path):
+    base_path = getattr(sys, '_MEIPASS', path.dirname(path.abspath(__file__)))
+    return path.join(base_path, relative_path)
 
 #WRITES SELECTED DATABASE TABLE TO A CSV FILE
 def subConvertDB(fullpath, dbFPath, tableName):
@@ -232,7 +242,7 @@ mainWindow = Tk()
 mainWindow.geometry('%dx%d+%d+%d' % (mainWidth, mainHeight, mainCornerX, mainCornerY))
 mainWindow.resizable(False, False)
 mainWindow.title("SQLite3 Database Conversion Tool")
-icon = PhotoImage(file="Icon.png")
+icon = PhotoImage(file=resource_path('assets\\Icon.png'))
 mainWindow.iconphoto(False, icon)
 
 #DATABASE SELECTION WIDGETS
