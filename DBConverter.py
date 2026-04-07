@@ -1,5 +1,5 @@
 ###################
-# VERSION 1.03.02 #
+# VERSION 1.03.03 #
 ###################
 
 ###################
@@ -242,7 +242,7 @@ mainWindow = Tk()
 mainWindow.geometry('%dx%d+%d+%d' % (mainWidth, mainHeight, mainCornerX, mainCornerY))
 mainWindow.resizable(False, False)
 mainWindow.title("SQLite3 Database Conversion Tool")
-icon = PhotoImage(file=resource_path('assets\\Icon.png'))
+icon = PhotoImage(file=resource_path('Icon.png'))
 mainWindow.iconphoto(False, icon)
 
 #DATABASE SELECTION WIDGETS
