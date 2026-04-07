@@ -16,4 +16,4 @@ The [latest release](https://github.com/MashedUpPeanuts/SQLite-to-CSV/releases) 
 
 Alternatively, the source code package can be downloaded from the latest release and compiled using:
 
-`py -m PyInstaller -F --icon='Icon.png' --add-data "Icon.png;.\assets" --onefile --noconsole 'DBConverter.py'`
+`py -m PyInstaller -F --icon='Icon.png' --add-data "Icon.png;." --onefile --noconsole 'DBConverter.py'`
